@@ -12,22 +12,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.magicsoft.viewpagertransform.R;
-import com.magicsoft.viewpagertransform.transform.GallyPageTransformer;
-
-import java.util.ArrayList;
+import com.magicsoft.viewpagertransform.transform.ZoomOutPageTransformer;
 
 /**
  * Created by  on 2017/11/8
- *
- * 3d画廊
+ * <p>
+ * 普通画廊
  */
 
-public class GalleryActivity extends AppCompatActivity {
-
-    private ViewPager mVp;
-    private int [] mImg=new int[]{R.mipmap.sea,R.mipmap.sunset,R.mipmap.sea,R.mipmap.lotus,R.mipmap.red};
-    private ArrayList<Integer> mImgList;
+public class GalleryActivity2 extends AppCompatActivity {
     private LayoutInflater mLayoutInflater;
+    private ViewPager mVp;
+    private int[] mImg = new int[]{R.mipmap.sea, R.mipmap.sunset, R.mipmap.sea, R.mipmap.lotus, R.mipmap.red};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,15 +32,12 @@ public class GalleryActivity extends AppCompatActivity {
 
         mLayoutInflater = LayoutInflater.from(this);
         mVp = (ViewPager) findViewById(R.id.vp_gallery_vp);
-        mImgList = new ArrayList<>();
-        for (int i = 0; i < mImg.length; i++) {
-            mImgList.add(mImg[i]);
-        }
+
 
         mVp.setAdapter(new MyAdapter());
-        mVp.setOffscreenPageLimit(mImgList.size());//设置预加载数量
-        mVp.setPageMargin(-50);//控制两幅图之间的间距
-        mVp.setPageTransformer(true,new GallyPageTransformer());//3D画廊模式
+        mVp.setOffscreenPageLimit(mImg.length);//设置预加载数量
+        mVp.setPageMargin(10);//控制两幅图之间的间距
+       mVp.setPageTransformer(true,new ZoomOutPageTransformer());
         //viewPager左右两边滑动无效的处理
         findViewById(R.id.ll_gallery_outer).setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -52,34 +45,18 @@ public class GalleryActivity extends AppCompatActivity {
                 return mVp.dispatchTouchEvent(motionEvent);
             }
         });
-        mVp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
     }
 
-    class MyAdapter extends PagerAdapter{
+    class MyAdapter extends PagerAdapter {
 
         @Override
         public int getCount() {
-            return mImgList.size();
+            return mImg.length;
         }
 
         @Override
         public boolean isViewFromObject(View view, Object object) {
-            return view==object;
+            return view == object;
         }
 
         @Override
@@ -87,7 +64,7 @@ public class GalleryActivity extends AppCompatActivity {
             View view = mLayoutInflater.inflate(R.layout.item_img, container, false);
             ImageView img = view.findViewById(R.id.img_item_img);
             //img.setImageResource(R.mipmap.sea);
-            img.setImageResource(mImgList.get(position));
+            img.setImageResource(mImg[position]);
             img.setScaleType(ImageView.ScaleType.CENTER_CROP);
             container.addView(view);
             return view;
@@ -95,9 +72,7 @@ public class GalleryActivity extends AppCompatActivity {
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-           container.removeView((View)object);
+            container.removeView((View) object);
         }
     }
-
-
 }

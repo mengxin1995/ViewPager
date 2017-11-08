@@ -3,6 +3,9 @@ package com.magicsoft.viewpagertransform.transform;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+/**
+ * 3d画廊
+ */
 public class GallyPageTransformer implements ViewPager.PageTransformer {
     private static final float min_scale = 0.85f;
  

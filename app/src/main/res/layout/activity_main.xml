@@ -17,9 +17,17 @@
             android:text="3d画廊"
             android:onClick="gallery"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="画廊"
+            android:onClick="gallery2"/>
 
-
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="transform"
+            android:onClick="transform"/>
     </LinearLayout>
 
 </ScrollView>

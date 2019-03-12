@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.magicsoft.viewpagertransform.R;
+import com.magicsoft.viewpagertransform.indicator.ViewPagerIndicator;
 import com.magicsoft.viewpagertransform.transform.ZoomOutPageTransformer;
 
 /**
@@ -24,6 +25,7 @@ public class GalleryActivity2 extends AppCompatActivity {
     private LayoutInflater mLayoutInflater;
     private ViewPager mVp;
     private int[] mImg = new int[]{R.mipmap.sea, R.mipmap.sunset, R.mipmap.lotus, R.mipmap.red};
+    private ViewPagerIndicator mViewPagerIndicator;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +34,8 @@ public class GalleryActivity2 extends AppCompatActivity {
 
         mLayoutInflater = LayoutInflater.from(this);
         mVp = (ViewPager) findViewById(R.id.vp_gallery_vp);
+        mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.indicator_line);
+        mViewPagerIndicator.setViewPager(mVp, mImg.length);
 
 
         MyAdapter myAdapter = new MyAdapter();

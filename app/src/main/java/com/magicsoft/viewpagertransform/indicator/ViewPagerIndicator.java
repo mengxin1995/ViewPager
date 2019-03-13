@@ -137,9 +137,9 @@ public class ViewPagerIndicator extends View {
                     float topOpen = -mRadius;
                     float bottomOpen = mRadius;
                     RectF rectOpen = new RectF(leftOpen, topOpen, rightOpen, bottomOpen);// 设置个新的长方形
-                    canvas.drawRoundRect(rectOpen, mRadius, mRadius, paintStroke);
-                    //圆
-                    for (int i = 1; i < mNum; i++) {
+                    canvas.drawRoundRect(rectOpen, mRadius, mRadius, paintFill);
+                    //圆 最后一个圆不画
+                    for (int i = 1; i < mNum - 1; i++) {
                         canvas.drawCircle(rightClose - mRadius + i * mDistance, 0, mRadius, paintStroke);
                     }
 
@@ -150,7 +150,7 @@ public class ViewPagerIndicator extends View {
                     float topClose = -mRadius;
                     float bottomClose = mRadius;
                     RectF rectClose = new RectF(leftClose, topClose, rightClose, bottomClose);// 设置个新的长方形
-                    canvas.drawRoundRect(rectClose, mRadius, mRadius, paintStroke);
+                    canvas.drawRoundRect(rectClose, mRadius, mRadius, paintFill);
                     //第二个 线  显示
                     if (mPosition < mNum - 1) {
                         float rightOpen = -(mNum) * 0.5f * mDistance + (mPosition + 2) * mDistance + mRadius;

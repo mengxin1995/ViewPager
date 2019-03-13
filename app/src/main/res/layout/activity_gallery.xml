@@ -21,13 +21,12 @@
         android:layout_height="50dp"
         android:background="#efefef"
         app:vpi_default_color="#cdcdcd"
-        app:vpi_distance="800dp"
         app:vpi_animation="false"
         app:vpi_distanceType="BY_LAYOUT"
-        app:vpi_indicatorType="LINE"
+        app:vpi_indicatorType="CIRCLE_LINE"
         app:vpi_length="24dp"
         app:vpi_radius="8dp"
-        app:vpi_selected_color="#FF23EEF5"
+        app:vpi_selected_color="#4775F4"
         />
 
 
